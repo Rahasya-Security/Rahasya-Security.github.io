@@ -389,7 +389,7 @@ function App() {
           </p>
           <div className="max-w-2xl mx-auto mb-8 bg-white/95 backdrop-blur-lg rounded-3xl shadow-2xl overflow-hidden">
             <div className="p-6 md:p-8 pt-8 md:pt-10">
-              <iframe src="https://tally.so/embed/wAGZxN?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" width="100%" height="200" frameBorder="0" marginHeight={0} marginWidth={0} title="Cipherra Early Access" style={{ borderRadius: '0' }}></iframe>
+              <iframe src="https://tally.so/embed/wAGZxN?alignLeft=1&hideTitle=1&transparentBackground=1" loading="lazy" width="100%" frameBorder="0" marginHeight={0} marginWidth={0} title="Cipherra Early Access" className="h-[280px] md:h-[200px] w-full rounded-none block" style={{ borderRadius: 0 }}></iframe>
             </div>
           </div>
           <p className="text-blue-200 text-sm">
