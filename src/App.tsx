@@ -127,7 +127,7 @@ function App() {
             
             // Check if element is already in viewport
             const rect = cardElement.getBoundingClientRect();
-            const isInViewport = rect.top < window.innerHeight * 0.85 && rect.bottom > 0;
+            const isInViewport = rect.top < window.innerHeight * 0.95 && rect.bottom > 0;
             
             if (isInViewport) {
               // If already visible, just set to final state immediately
@@ -139,11 +139,11 @@ function App() {
               window.gsap.to(card, {
                 opacity: 1,
                 y: 0,
-                duration: 0.8,
+                duration: 0.3,
                 ease: "power2.out",
                 scrollTrigger: {
                   trigger: card,
-                  start: "top 85%",
+                  start: "top 95%",
                   toggleActions: "play none none none",
                   once: true
                 },
