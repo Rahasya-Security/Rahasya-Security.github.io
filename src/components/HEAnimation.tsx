@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   User, 
@@ -33,7 +33,8 @@ interface Step {
 
 const HEAnimation: React.FC = () => {
   const [step, setStep] = useState(0);
-  const [isProcessing, setIsProcessing] = useState(true);
+  const [isProcessing, setIsProcessing] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const steps: Step[] = [
     {
@@ -63,6 +64,21 @@ const HEAnimation: React.FC = () => {
     }
   ];
 
+  // Enable auto-play when section scrolls into view, pause when it leaves
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        setIsProcessing(entry.isIntersecting);
+      },
+      { threshold: 0.5, rootMargin: '0px' }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   // Auto-progress timer
   useEffect(() => {
     let interval: ReturnType<typeof setInterval> | undefined;
@@ -86,7 +102,7 @@ const HEAnimation: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center bg-slate-50 p-4 md:p-8 font-sans">
+    <div ref={containerRef} className="flex flex-col items-center justify-center bg-slate-50 p-4 md:p-8 font-sans">
       <div className="max-w-5xl w-full bg-white rounded-3xl shadow-2xl overflow-hidden border border-slate-200">
         
         {/* Header */}

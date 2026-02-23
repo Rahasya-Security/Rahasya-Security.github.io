@@ -58,12 +58,12 @@ html {
   transform: scale(1.05);
 }
 
-/* Glass effect */
+/* Glass effect - consistent opacity so background doesn't show through unevenly */
 .glass-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.97);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
 /* Gradient text */
